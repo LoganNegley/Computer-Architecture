@@ -87,8 +87,10 @@ class CPU:
                 self.reg[operand_a] = operand_b
                 self.pc += 3
 
-            elif instrucion == PRN
-
+            elif instrucion == PRN: #PRN prints numeric value stored in given register
+                print(self.reg[operand_a])
+                self.pc += 2
+                
             elif instrucion == HLT: #stops program running 
                 self.running = False
                 self.pc += 1
