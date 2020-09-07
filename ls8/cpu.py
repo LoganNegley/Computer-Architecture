@@ -16,6 +16,13 @@ class CPU:
         self.pc = 0        #program counter----currently executing instuction
         self.running = True #if program is running 
 
+
+    def ram_read(self, address):
+        return self.ram[address]
+
+    def ram_write(self, address, value):
+        self.ram[address] = value
+
     def load(self):
         """Load a program into memory."""
 
@@ -71,8 +78,4 @@ class CPU:
         """Run the CPU."""
         pass
 
-    def ram_read(self, address):
-        pass
 
-    def ram_write(self, address, value):
-        pass
