@@ -5,7 +5,9 @@
 import sys
 from cpu import *
 
+directory = "/examples"
+
 cpu = CPU()
 
-cpu.load()
+cpu.load(mult.ls8)
 cpu.run()
