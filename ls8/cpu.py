@@ -87,9 +87,11 @@ class CPU:
                 self.reg[operand_a] = operand_b
                 self.pc += 3
 
-            elif instrucion == HLT:
+            elif instrucion == PRN
+
+            elif instrucion == HLT: #stops program running 
                 self.running = False
-                self.pc = 1
+                self.pc += 1
 
 
 
