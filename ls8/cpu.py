@@ -2,15 +2,19 @@
 
 import sys
 
+HLT = 0b00000001
+PRN = 0b01000111
+LDI = 0b10000010
+
 class CPU:
     """Main CPU class."""
 
     def __init__(self):
         """Construct a new CPU."""
-        self.ram = [0] * 256
-        self.reg = [0] * 8
-        self.pc = 0
-        self.running = True
+        self.ram = [0] * 256 #256 bytes memory
+        self.reg = [0] * 8 #8 registers
+        self.pc = 0        #program counter----currently executing instuction
+        self.running = True #if program is running 
 
     def load(self):
         """Load a program into memory."""
