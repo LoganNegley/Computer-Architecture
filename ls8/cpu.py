@@ -76,11 +76,12 @@ class CPU:
 
     def run(self):
         """Run the CPU."""
-        instrucion = self.ram_read(self.pc)
-        operand_a = self.ram_read(self.pc + 1)
-        operand_b = self.ram_read(self.pc + 2)
 
         while self.running:
+            instrucion = self.ram_read(self.pc)
+            operand_a = self.ram_read(self.pc + 1)
+            operand_b = self.ram_read(self.pc + 2)
+            
             if instrucion == LDI: #store value in register or set register to value
                 #register location at pc + 1
                 #value is at pc + 2
@@ -90,7 +91,7 @@ class CPU:
             elif instrucion == PRN: #PRN prints numeric value stored in given register
                 print(self.reg[operand_a])
                 self.pc += 2
-                
+
             elif instrucion == HLT: #stops program running 
                 self.running = False
                 self.pc += 1
