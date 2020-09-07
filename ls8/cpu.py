@@ -80,4 +80,17 @@ class CPU:
         operand_a = self.ram_read(self.pc + 1)
         operand_b = self.ram_read(self.pc + 2)
 
+        while self.running:
+            if instrucion == LDI: #store value in register or set register to value
+                #register location at pc + 1
+                #value is at pc + 2
+                self.reg[operand_a] = operand_b
+                self.pc += 3
+
+            elif instrucion == HLT:
+                self.running = False
+                self.pc = 1
+
+
+
 
