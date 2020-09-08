@@ -28,24 +28,33 @@ class CPU:
         """Load a program into memory."""
 
         address = 0
+        
 
         # For now, we've just hardcoded a program:
 
-        program = [
-            # From print8.ls8
-            0b10000010, # LDI R0,8
-            0b00000000,
-            0b00001000,
-            0b01000111, # PRN R0
-            0b00000000,
-            0b00000001, # HLT
-        ]
+        # program = [
+        #     # From print8.ls8
+        #     0b10000010, # LDI R0,8
+        #     0b00000000,
+        #     0b00001000,
+        #     0b01000111, # PRN R0
+        #     0b00000000,
+        #     0b00000001, # HLT
+        # ]
+
+        # for instruction in program:
+        #       self.ram[address] = instruction
+        #     address += 1
 
         # Bringing in dynamic programs
+        # Open file using command line 
+        file = sys.argv[1]
+        
+        with open(file) as program_file:
+            for line in program_file:
+                print(line)
 
-        for instruction in program:
-            self.ram[address] = instruction
-            address += 1
+
 
 
     def alu(self, op, reg_a, reg_b):
