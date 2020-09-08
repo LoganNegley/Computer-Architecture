@@ -56,7 +56,11 @@ class CPU:
 
         with open(file) as program_file:          #Opening another file
             for line in program_file:             #For every line in program file do something
-                print(line)
+                # print(line)
+                program_split = line.split('#')           #Only get the nums of program by converting into array [0]
+
+                program_value = program_split[0].strip()  #remove whitespace from line of program
+
 
 
 
