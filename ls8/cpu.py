@@ -47,11 +47,15 @@ class CPU:
         #     address += 1
 
         # Bringing in dynamic programs
-        # Open file using command line 
-        file = sys.argv[1]
-        
-        with open(file) as program_file:
-            for line in program_file:
+
+        file = sys.argv[1]           #Open file using command line
+
+        if len(sys.argv) != 2:       #If there isn't enough arguments and we crash send error example
+            print("Example to Use: ls8.py filename")
+            sys.exit(1)               #Exit program if it fails
+
+        with open(file) as program_file:          #Opening another file
+            for line in program_file:             #For every line in program file do something
                 print(line)
 
 
