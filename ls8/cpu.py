@@ -24,12 +24,15 @@ class CPU:
     def ram_write(self, address, value):
         self.ram[address] = value
 
+
+    if len(sys.argv) != 2:       #If there isn't enough arguments and we crash send error example
+        print("Example to Use: ls8.py filename")
+        sys.exit(1)               #Exit program if it fails
+    
     def load(self):
         """Load a program into memory."""
 
         address = 0
-        
-
         # For now, we've just hardcoded a program:
 
         # program = [
@@ -41,28 +44,29 @@ class CPU:
         #     0b00000000,
         #     0b00000001, # HLT
         # ]
-
         # for instruction in program:
         #       self.ram[address] = instruction
         #     address += 1
 
+
         # Bringing in dynamic programs
-
         file = sys.argv[1]           #Open file using command line
-
-        if len(sys.argv) != 2:       #If there isn't enough arguments and we crash send error example
-            print("Example to Use: ls8.py filename")
-            sys.exit(1)               #Exit program if it fails
 
         with open(file) as program_file:          #Opening another file
             for line in program_file:             #For every line in program file do something
-                # print(line)
                 program_split = line.split('#')           #Only get the nums of program by converting into array [0]
-
+                # print(program_split)
                 program_value = program_split[0].strip()  #remove whitespace from line of program
+                # print(program_value)
+                if program_value == "":                    #make sure there is value before # in eachline
+                    continue
 
+                program_num = int(program_value)           #the num left from strip is usable to add to ram---converts string to number
+                self.ram_write(address, program_num)       # add num from program to the our ram
+                address += 1
 
-
+                # print(program_num)
+                # print(self.ram)
 
 
     def alu(self, op, reg_a, reg_b):
