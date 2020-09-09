@@ -119,7 +119,10 @@ class CPU:
                 print(self.reg[operand_a])
                 self.pc += 2
 
-
+            elif instrucion == MUL:
+                self.alu("MUL", operand_a, operand_b)
+                self.pc += 3
+                
             elif instrucion == HLT: #stops program running 
                 self.running = False
                 self.pc += 1
