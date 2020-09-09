@@ -6,6 +6,7 @@ import sys
 HLT = 0b00000001
 PRN = 0b01000111
 LDI = 0b10000010
+MUL = 0b10100010 
 
 class CPU:
     """Main CPU class."""
@@ -75,6 +76,8 @@ class CPU:
         if op == "ADD":
             self.reg[reg_a] += self.reg[reg_b]
         #elif op == "SUB": etc
+        elif op == "MUL":
+            self.reg[reg_a] *= self.reg[reg_b]
         else:
             raise Exception("Unsupported ALU operation")
 
@@ -115,6 +118,7 @@ class CPU:
             elif instrucion == PRN: #PRN prints numeric value stored in given register
                 print(self.reg[operand_a])
                 self.pc += 2
+
 
             elif instrucion == HLT: #stops program running 
                 self.running = False
